@@ -13,5 +13,8 @@
 </script>
 
 <style>
+	@import './common/uni.css';
+	@import './common/icon.css';
+	@import './common/animate.css';
 	/*每个页面公共css */
 </style>
