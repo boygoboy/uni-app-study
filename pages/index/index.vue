@@ -1,53 +1,57 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-         
-		</view>
-		 <view class="icon iconfont icon-smile"></view>
+	<view>
+		<!-- #ifdef MP -->
+		<!-- 搜索框在小程序中显示 -->
+		<search-input></search-input>
+		<!-- #endif -->
 	</view>
 </template>
 
 <script>
+	import searchInput from '@/components/common/search-input.vue'
 	export default {
+		components: {
+			searchInput
+		},
 		data() {
 			return {
 				title: 'Hello'
 			}
 		},
 		onLoad() {
-
+         this.switchPlacelolder()
 		},
 		methods: {
-
+			switchPlacelolder() {
+				// #ifdef APP-PLUS
+				const switchData = ['html', 'css', 'js', 'vue', 'react', 'node']
+				const currentWebview = this.$scope
+			.$getAppWebview(); //此对象相当于html5plus里的plus.webview.currentWebview()。在uni-app里vue页面直接使用plus.webview.currentWebview()无效
+				//设置searchInput的样式
+				let index = 0
+				currentWebview.setStyle({
+					"titleNView": {
+						"searchInput": {
+							"placeholder": switchData[index]
+						}
+					}
+				});
+				setInterval(() => {
+					index=index<switchData.length?++index:0
+					currentWebview.setStyle({
+						"titleNView": {
+							"searchInput": {
+								"placeholder": switchData[index]
+							}
+						}
+					});
+				}, 5000)
+				// #endif
+			}
 		}
 	}
 </script>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
+<style lang="scss">
 
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
 </style>

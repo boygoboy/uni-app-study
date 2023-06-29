@@ -13,8 +13,6 @@
 </script>
 
 <style>
-	@import './common/uni.css';
-	@import './common/icon.css';
-	@import './common/animate.css';
-	/*每个页面公共css */
+@import url(@/common/css/common.css);
+@import url("~@/static/icon/iconfont.css");
 </style>
