@@ -4,14 +4,24 @@
 		<!-- 搜索框在小程序中显示 -->
 		<search-input></search-input>
 		<!-- #endif -->
+		<mxg-banner></mxg-banner>
+		
+		<category-box></category-box>
+		<view class="list-box">
+			<swiper-course></swiper-course>
+		</view>
 	</view>
 </template>
 
 <script>
 	import searchInput from '@/components/common/search-input.vue'
+	import mxgBanner from '@/components/common/mxg-banner.vue'
+	import categoryBox from  './components/category-box.vue'
+	import swiperCourse from './components/swiper-course.vue'
 	export default {
 		components: {
-			searchInput
+			searchInput,mxgBanner,categoryBox,
+			swiperCourse
 		},
 		data() {
 			return {
@@ -53,5 +63,7 @@
 </script>
 
 <style lang="scss">
-
+.list-box{
+	padding: 0 30rpx;
+}
 </style>
