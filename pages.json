@@ -6,7 +6,7 @@
 				"navigationBarBackgroundColor":"#345dc2",
 				"navigationBarTextStyle":"white",
 				"app-plus": {
-					"bounce": "non",
+					"bounce": "none",
 					"titleNView": {
 						"type": "transparent",
 						"searchInput": {
@@ -16,8 +16,9 @@
 							"borderRadius":"30rpx",
 							"placeholder":"搜索你想要的内容",
 							"disabled": true
-						},
-						"buttons": [
+						}
+					   // #ifdef APP-PLUS
+						,"buttons": [
 							{
 								"float": "right",
 								"fontSize": "33rpx",
@@ -26,6 +27,7 @@
 								"text": "\ue689"
 							}
 						]
+						// #endif
 					}
 				}
 			}
@@ -34,9 +36,25 @@
             "path" : "pages/category/category",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "navigationBarTitleText": "分类",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#345dc2",
+				"navigationBarTextStyle":"white",
+				"app-plus": {
+					"bounce":"none",
+					"titleNView":{
+						"buttons":[
+							{
+								"fontSrc":"/static/icon/iconfont.ttf",
+								"text":"\ue608",
+								"fontSize":"21",
+								"color":"#ffffff"
+							}
+						]
+					}
+				}
             }
+			
             
         }
         ,{
@@ -66,11 +84,51 @@
             }
             
         }
+        ,{
+            "path" : "pages/public/web-view/web-view",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		
+        ,{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": {
+						"autoBackButton": false,
+						"searchInput": {
+							"align": "left",
+							"placeholder": "请搜索你想要的内容",
+							"borderRadius": "30rpx",
+							"backgroundColor": "#f0f1f2"
+						},
+						"buttons": [
+							{
+								"float": "right",
+								"fontSize": "16",
+								"text": "取消",
+								"color": "#2A333B"
+							}
+						]
+					}
+				}
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"backgroundColorTop":"#FFFFFF"
 	},
 	"tabBar": {
 		"color": "#c1bec3",

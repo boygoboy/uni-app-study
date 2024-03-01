@@ -1,59 +1,53 @@
 <template>
-	<view class="swiper-box">
-		<view class="title-box row center space-between">
-			<view class="title-item">
-				<text class="title">热门推荐</text>
-				<text class="word">HOT</text>
-			</view>
-			<view class="action-btn">
-				<text>全部</text>
-				<text class="iconfont icon-right"></text>
-			</view>
-		</view>
-             <swiper class="swiper" next-margin="50rpx">
-				<swiper-item class="swiper-item" v-for="(item,index) in 2" :key="index">
-					{{item}}
-				</swiper-item>
-			</swiper>
-	</view>
+	<list-box :name="name" :word="word">
+		<swiper class="swiper" next-margin="50rpx" :style="{height:`${rows*200}rpx`}">
+			<swiper-item class="swiper-item" v-for="(item,index) in columns" :key="index">
+				<course-item v-for="(item1,index1) in courseData.slice(index*rows,(index+1)*rows)"
+				 :key="index1" :item="item1"></course-item>
+			</swiper-item>
+		</swiper>
+	</list-box>
 </template>
 
 <script>
+	import courseItem from '@/components/common/course-item.vue'
+	import courseData from '@/mock/courseData.js'
+	import listBox from './list-box.vue'
 	export default{
-		
+		components:{
+			courseItem,listBox
+		},
+		props:{
+			rows:{
+				type:Number,
+				default:4
+			},
+			columns:{
+				type:Number,
+				default:2
+			},
+			courseData:{
+				type:Array,
+				default:()=>courseData
+			},
+			name:{
+				type:String,
+				default:'热门推荐'
+			},
+			word:{
+				type:String,
+				default:'HOT'
+			}
+		}
 	}
 </script>
 
 <style lang="scss">
-	.swiper-box{
-		margin-top: 20rpx;
-		.title-box{
-			.title-item{
-				.title{
-					margin-right: 14rpx;
-					font-size: 46rpx;
-					font-weight: 500;
-					
-				}
-				.word{
-					background-image: linear-gradient(to right,$mxg-color-orange,$mxg-text-color-red);
-					border-radius: 30rpx 30rpx 30rpx 0rpx;
-					padding: 0 10rpx;
-				}
-			}
-			.action-btn{
-				color: $mxg-text-color-grey;
-				.icon-right{
-					font-size: 26rpx;
-				}
-			}
-		}
 		.swiper{
 			height: 800rpx;
-			background-color: red;
+			background-color: #fff;
 			.swiper-item{
 				padding: 20rpx;
 			}
 		}
-	}
 </style>
